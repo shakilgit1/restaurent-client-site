@@ -11,6 +11,7 @@ import Register from "../Pages/Registration/Register";
 import MyAddedFoods from "../Pages/MyAddedFoods/MyAddedFoods";
 import MyOrderedFoods from "../Pages/MyOrderedFoods/MyOrderedFoods";
 import AddFoodItem from "../Pages/AddFoodItem/AddFoodItem";
+import SingleFoodPage from "../Pages/SingleFoodPage/SingleFoodPage";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
         {
           path:'/my-ordered-foods',
           element: <MyOrderedFoods></MyOrderedFoods>
+        },
+        {
+          path:'/single-item/:id',
+          element: <SingleFoodPage></SingleFoodPage>
         },
     ]
   },

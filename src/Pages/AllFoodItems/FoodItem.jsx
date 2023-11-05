@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 const FoodItem = ({food}) => {
 
-    const {name, image, price, quantity, category} = food || {};
+    const {_id, name, image, price, quantity, category} = food || {};
     
     useEffect(() => {
         AOS.init({duration:"1000", delay:"500"});
@@ -43,7 +43,7 @@ const FoodItem = ({food}) => {
           </div>
         </div>
           <div className="items-center gap-8 flex mt-4">
-            <Link to="">
+            <Link to={`/single-item/${_id}`}>
               <button className="btn bg-black text-white">Details</button>
             </Link>
           </div>
