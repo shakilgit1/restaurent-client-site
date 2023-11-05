@@ -63,11 +63,11 @@ const Register = () => {
         <div className="text-center">
           <h1 className="text-5xl font-bold px-12 mb-4">Register now!</h1> 
         </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-blue-300 ">
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-black">
           <form onSubmit={handleRegister} className="card-body">
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Name</span>
+                <span className="label-text text-white">Name</span>
               </label>
               <input
                 type="text"
@@ -79,7 +79,7 @@ const Register = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Photo URL</span>
+                <span className="label-text text-white">Photo URL</span>
               </label>
               <input
                 type="text"
@@ -91,7 +91,7 @@ const Register = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text text-white">Email</span>
               </label>
               <input
                 type="email"
@@ -103,7 +103,7 @@ const Register = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Password</span>
+                <span className="label-text text-white">Password</span>
               </label>
               <input
                 type="password"
@@ -113,16 +113,16 @@ const Register = () => {
                 required
               />
               <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
+                <a href="#" className="label-text-alt link link-hover text-white">
                   Forgot password?
                 </a>
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Register</button>
+              <button className="btn btn-primary text-white">Register</button>
             </div>
           </form>
-          <p className="text-center mb-5">Already have an account? Please <Link className="text-purple-900 font-bold" to='/login'>Login</Link></p>
+          <p className="text-center mb-5 text-white">Already have an account? Please <Link className="text-blue-500 font-bold text-xl" to='/login'>Login</Link></p>
         </div>
       </div>
     </div>

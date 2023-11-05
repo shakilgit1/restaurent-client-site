@@ -57,12 +57,12 @@ const Login = () => {
           <h1 className="text-5xl font-bold px-12 mb-4">Login now!</h1>
           
         </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-purple-300 ">
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-black ">
           <form onSubmit={handleLogin} className="card-body">
            
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text text-white">Email</span>
               </label>
               <input
                 type="email"
@@ -74,7 +74,7 @@ const Login = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Password</span>
+                <span className="label-text text-white">Password</span>
               </label>
               <input
                 type="password"
@@ -84,7 +84,7 @@ const Login = () => {
                 required
               />
               <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
+                <a href="#" className="label-text-alt link link-hover text-white">
                   Forgot password?
                 </a>
               </label>
@@ -93,12 +93,12 @@ const Login = () => {
             <button className="btn btn-primary">Login</button>
 
             <div>
-                <p className="text-xl text-center mt-3">Sign in with <Link onClick={handleGoogleLogin} className="text-blue-600">Google</Link></p>
+                <p className="text-xl text-center mt-3 text-white">Sign in with <Link onClick={handleGoogleLogin} className="text-blue-600 font-bold">Google</Link></p>
             </div>
              
             </div>
           </form>
-          <p className="text-center mb-5">New to this website? Please <Link className="text-blue-600 font-bold" to='/register'>Register</Link></p>
+          <p className="text-center mb-5 text-white">New to this website? Please <Link className="text-blue-600 font-bold text-lg" to='/register'>Register</Link></p>
         </div>
       </div>
      

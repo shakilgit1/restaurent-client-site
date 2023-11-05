@@ -44,7 +44,7 @@ const FoodItem = ({food}) => {
         </div>
           <div className="items-center gap-8 flex mt-4">
             <Link to={`/single-item/${_id}`}>
-              <button className="btn bg-black text-white">Details</button>
+              <button className="btn bg-black text-white rounded-lg">Details</button>
             </Link>
           </div>
         </div>

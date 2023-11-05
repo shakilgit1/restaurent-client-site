@@ -22,7 +22,7 @@ const SingleFoodPage = () => {
         <div className="flex justify-center">
         <img
             className="w-full rounded-t-lg h-[250px]"
-            src={singleItem.image}
+            src={singleItem?.image}
             alt="product image"
           />
         </div>
@@ -30,29 +30,29 @@ const SingleFoodPage = () => {
         <div className="flex justify-between">
         <div>   
          <h5 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                {singleItem.name}
+                {singleItem?.name}
             </h5>
             <h5 className="text-xl font-semibold  text-blue-400">
-             Category: {singleItem.category}
+             Category: {singleItem?.category}
             </h5>
             <h5 className="text-lg font-semibold  text-purple-400">
-           Food origin: {singleItem.origin}
+           Food origin: {singleItem?.origin}
             </h5>
             <h5 className="text-lg font-bold  text-sky-400">
-           Made By: {singleItem.made_by}
+           Made By: {singleItem?.made_by}
             </h5>
             <h5 className="text-sm font-semibold  text-black">
-           {singleItem.description}
+           {singleItem?.description}
             </h5>
          </div>
          <div>
           <span className="text-3xl font-bold text-gray-900 dark:text-white">
-             ${singleItem.price}
+             ${singleItem?.price}
             </span>
           </div>
         </div>
           <div className="items-center gap-8 flex mt-4">
-            <Link to="">
+            <Link to={`/purchase/${singleItem?._id}`}>
               <button className="btn bg-black text-white">Order Now</button>
             </Link>
           </div>
