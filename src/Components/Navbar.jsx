@@ -31,13 +31,13 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-black px-8">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-5 w-5 text-white"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -52,7 +52,7 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52"
           >
             {navLinks}
           </ul>
@@ -63,29 +63,11 @@ const Navbar = () => {
           alt=""
         />
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-center hidden lg:flex text-white">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        {/* {user?.email? (
-          <>
-            <p>{user.displayName}</p>
-            <img
-              className="w-12 rounded-full ml-2"
-              src={user.photoURL}
-              alt=""
-            />
-            <Link to="/login" onClick={handleLogOut} className="btn ml-2">
-              Sign Out
-            </Link>
-          </>
-        ) : (
-          <Link to="/login" className="btn">
-            Login
-          </Link>
-        )} */}
 
-       
        {
         user?.email? <div className="dropdown dropdown-end">
         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -98,22 +80,28 @@ const Navbar = () => {
           className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
         >
           <li>
-            <a className="justify-between">
-              Profile
-              {/* <span className="badge">New</span> */}
-            </a>
+            <Link to="/my-added-food" className="justify-between">
+            My added food items
+            </Link>
           </li>
           <li>
-            <a>Settings</a>
+            <Link to="/add-food" className="justify-between">
+            Add a food item
+            </Link>
           </li>
           <li>
-          <Link to="/login" onClick={handleLogOut} className="">
+           <Link to="/my-ordered-foods" className="justify-between">
+           My ordered food items
+            </Link>
+          </li>
+          <li>
+          <Link to="/login" onClick={handleLogOut} className="btn-sm">
               Sign Out
             </Link>
           </li>
         </ul>
       </div> : 
-        <Link to="/login" className="btn">
+        <Link to="/login" className="btn btn-sm">
         Login
         </Link>
         }

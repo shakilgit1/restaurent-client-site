@@ -9,7 +9,7 @@ const AllFoodItems = () => {
         axios.get('http://localhost:5000/foods')
         .then(res =>{
             setAllFoods(res.data);
-            console.log(res.data);
+            // console.log(res.data);
         })
     }, [])   
 
