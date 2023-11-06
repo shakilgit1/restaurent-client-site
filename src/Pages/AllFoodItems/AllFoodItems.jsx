@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import FoodItem from "./FoodItem";
+import AllFoodBanner from "./allFoodBanner";
 
 const AllFoodItems = () => {
   const [allFoods, setAllFoods] = useState([]);
@@ -54,6 +55,10 @@ const AllFoodItems = () => {
 
   return (
     <div className="">
+
+    <AllFoodBanner></AllFoodBanner>
+
+
       <h2 className="text-xl text-center">AllFoodItems page</h2>
 
       <div className="flex justify-center">

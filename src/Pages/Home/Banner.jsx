@@ -20,14 +20,14 @@ const Banner = () => {
       <div className="hero-overlay bg-opacity-60 bg-black"></div>
       <div className="hero-content text-white">
         <div className="max-w-md">
-          <h1 data-aos="fade-up" className="mb-5 text-5xl font-bold">
+          <h1 data-aos="fade-right" className="mb-5 text-5xl font-bold">
             ENJOY YOUR FAVORITE FOOD WITH FAMILY
           </h1>
           <p data-aos="fade-up" className="mb-5 opacity-82">
           Elevate your dining experience at PIZZAN! Our websites inviting banner welcomes you with a tantalizing glimpse of our exquisite dishes and warm ambiance. 
           </p>
         </div>
-        <button  data-aos="fade-down-right" className="btn btn-error bg-red-500">All Menus</button>
+        <button  data-aos="fade-down" className="btn btn-error bg-red-500 rounded-md">All Menus</button>
       </div>
     </div>
   );
