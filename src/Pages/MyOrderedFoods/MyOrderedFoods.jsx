@@ -23,7 +23,9 @@ const MyOrderedFoods = () => {
             <h2 className="text-center text-4xl font-bold my-8">Your Ordered food is here</h2>
             <div className="container mx-auto mb-8 grid md:grid-cols-2 gap-6">
               {
-                myFood?.map(food => <MyFood key={food._id} food={food}></MyFood>)
+                myFood?.map(food => <MyFood key={food._id} food={food} 
+                
+                ></MyFood>)
               }
             </div>
         </div>

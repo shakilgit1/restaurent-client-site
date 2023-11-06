@@ -46,8 +46,8 @@ const MyPurchasePage = () => {
       }
       else{
         const updates = {
-          order_count: order_count + 1, // Increase order_count by 1
-          quantity: quantity - purchaseQuantity, // Decrease quantity by 1
+          order_count: order_count + 1, 
+          quantity: quantity - purchaseQuantity, 
         };
   
         axiosMethod.post('/mycarts', purchaseItem)
@@ -199,7 +199,7 @@ const MyPurchasePage = () => {
 
     </form>
 
-  </div>
+    </div>
   );
 };
 
