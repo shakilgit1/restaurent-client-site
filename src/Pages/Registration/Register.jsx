@@ -61,7 +61,7 @@ const Register = () => {
     <div  className="hero min-h-screen">
       <div data-aos="fade-down" className="hero-content flex-col">
         <div className="text-center">
-          <h1 className="text-5xl font-bold px-12 mb-4">Register now!</h1> 
+          <h1 className="text-5xl font-bold px-12 mb-4 text-blue-500">Register now!</h1> 
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-black">
           <form onSubmit={handleRegister} className="card-body">
