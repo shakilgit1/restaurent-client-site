@@ -15,7 +15,7 @@ const FoodItem = ({food}) => {
 
   return (
     <div>
-       <div data-aos="fade-up" className="w-96 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-[460px]">
+       <div className="w-96 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-[460px]">
         <div className="flex justify-center">
         <img
             className="w-full rounded-t-lg h-[250px]"

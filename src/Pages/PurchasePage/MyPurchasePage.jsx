@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useAxios from "../../hooks/useaxios";
 import { useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 const MyPurchasePage = () => {
@@ -20,14 +21,14 @@ const MyPurchasePage = () => {
     });
   }, [axiosMethod, id]);
 
-  const {_id, name, image, made_by, quantity, order_count } = singleItem;
+  const {_id, name, image, made_by, order_count } = singleItem;
   
 
   const handlePurchase = e =>{
     e.preventDefault();
     const form  = e.target;
     const foodName  = form.name.value;
-    // const quantity  = form.quantity.value;
+    const quantity  = form.quantity.value;
     const date  = form.date.value;
     const buyer = form.buyer.value;
     const price  = form.price.value;
@@ -42,26 +43,34 @@ const MyPurchasePage = () => {
         quantity: quantity - 1, // Decrease quantity by 1
       };
 
-      axiosMethod.post('/mycarts', { ...purchaseItem, ...updates })
+      axiosMethod.post('/mycarts', purchaseItem)
       .then(res => {
       if(res.data.insertedId){
        console.log(res.data);
 
         setSingleItem({ ...singleItem, ...updates });
 
-        const updatedQuantity = purchaseItem.quantity - 1;
-        setSingleItem({ ...singleItem, quantity: updatedQuantity });
+        // const updatedQuantity = purchaseItem.quantity - 1;
+        // setSingleItem({ ...singleItem, quantity: updatedQuantity });
 
         axiosMethod.patch(`/foods/${_id}`, updates)
         .then((response) => {
           if (response.status === 200) {
-            alert('updated');
+            Swal.fire({
+              title: "Good job",
+              text: "food updated",
+              icon: "success"
+            });      
           }
         })
         .catch((error) => {
           console.log(error);
         });
-       return alert('inserted');
+       return Swal.fire({
+        title: "Good job",
+        text: "food added to your cats",
+        icon: "success"
+      });
 
       }
     })
@@ -72,36 +81,9 @@ const MyPurchasePage = () => {
       return alert('sorry items not available')
     }
 
-    // axiosMethod.post('/mycarts', { ...purchaseItem, ...updates })
-    // .then(res => {
-    //   if(res.data.insertedId){
-    //    console.log(res.data);
 
-    //     setSingleItem({ ...singleItem, ...updates });
-
-    //     const updatedQuantity = purchaseItem.quantity - 1;
-    //     setSingleItem({ ...singleItem, quantity: updatedQuantity });
-
-    //     axiosMethod
-    //     .patch(`/foods/${_id}`, updates)
-    //     .then((response) => {
-    //       if (response.status === 200) {
-    //         alert('updated');
-    //       }
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-    //    return alert('inserted');
-
-    //   }
-    // })
-    // .catch(err =>{
-    //   console.log(err);
-    // })
-    
-    
   }
+
 
   return (
     <div className="w-10/12 mx-auto my-12">
