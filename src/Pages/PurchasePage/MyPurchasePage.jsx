@@ -14,73 +14,69 @@ const MyPurchasePage = () => {
   // console.log(user?.displayName);
 
   useEffect(() => {
-    // axios.get(`http:///foods/${ilocalhost:5000d}`)
     axiosMethod.get(`/foods/${id}`).then((res) => {
       setSingleItem(res.data);
         
     });
   }, [axiosMethod, id]);
 
-  const {_id, name, image, made_by, order_count } = singleItem;
+  const {_id, name, image, made_by, order_count, quantity } = singleItem;
   
 
   const handlePurchase = e =>{
     e.preventDefault();
     const form  = e.target;
     const foodName  = form.name.value;
-    const quantity  = form.quantity.value;
+    const purchaseQuantity  = form.quantity.value;
     const date  = form.date.value;
     const buyer = form.buyer.value;
     const price  = form.price.value;
     const email = user?.email;
 
-    const purchaseItem  = {name, image, made_by, foodName, quantity, date, buyer, price, email, order_count};  
+    const purchaseItem  = {name, image, made_by, foodName, purchaseQuantity, date, buyer, price, email, order_count};  
 
     if(singleItem.quantity > 0 && singleItem.order_count >= 0){
 
-      const updates = {
-        order_count: order_count + 1, // Increase order_count by 1
-        quantity: quantity - 1, // Decrease quantity by 1
-      };
-
-      axiosMethod.post('/mycarts', purchaseItem)
-      .then(res => {
-      if(res.data.insertedId){
-       console.log(res.data);
-
-        setSingleItem({ ...singleItem, ...updates });
-
-        // const updatedQuantity = purchaseItem.quantity - 1;
-        // setSingleItem({ ...singleItem, quantity: updatedQuantity });
-
-        axiosMethod.patch(`/foods/${_id}`, updates)
-        .then((response) => {
-          if (response.status === 200) {
-            Swal.fire({
-              title: "Good job",
-              text: "food updated",
-              icon: "success"
-            });      
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-       return Swal.fire({
-        title: "Good job",
-        text: "food added to your cats",
-        icon: "success"
-      });
-
+      if(singleItem.quantity === 0){
+        Swal.fire({
+          title: "Sorry",
+          text: "this food is not available",
+          icon: "error"
+        }); 
       }
-    })
-    .catch(err =>{
-      console.log(err);
-    })
-    }else{
-      return alert('sorry items not available')
-    }
+      else{
+        const updates = {
+          order_count: order_count + 1, // Increase order_count by 1
+          quantity: quantity - purchaseQuantity, // Decrease quantity by 1
+        };
+  
+        axiosMethod.post('/mycarts', purchaseItem)
+        .then(res => {
+        if(res.data.insertedId){
+         console.log(res.data);
+  
+          setSingleItem({ ...singleItem, ...updates });
 
+          axiosMethod.patch(`/foods/${_id}`, updates)
+          .then(() => {
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+         return Swal.fire({
+          title: "Good job",
+          text: "food added to your cats",
+          icon: "success"
+        });
+  
+        }
+      })
+      .catch(err =>{
+        console.log(err);
+      })
+      }
+      
+      }
 
   }
 
@@ -136,7 +132,7 @@ const MyPurchasePage = () => {
                 name="quantity"
                 required
                 placeholder="quantity"
-                defaultValue={singleItem?.quantity}
+                defaultValue="1"
                 className="input input-bordered w-full"
               />
             </label>

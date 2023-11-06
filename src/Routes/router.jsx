@@ -13,6 +13,7 @@ import MyOrderedFoods from "../Pages/MyOrderedFoods/MyOrderedFoods";
 import AddFoodItem from "../Pages/AddFoodItem/AddFoodItem";
 import SingleFoodPage from "../Pages/SingleFoodPage/SingleFoodPage";
 import MyPurchasePage from "../Pages/PurchasePage/MyPurchasePage";
+import PrivetRoutes from "../PrivetRoutes/PrivetRoutes";
 
 const router = createBrowserRouter([
   {
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
         },
         {
           path:'/my-ordered-foods',
-          element: <MyOrderedFoods></MyOrderedFoods>
+          element: <PrivetRoutes><MyOrderedFoods></MyOrderedFoods></PrivetRoutes>
         },
         {
           path:'/single-item/:id',
@@ -58,7 +59,7 @@ const router = createBrowserRouter([
         },
         {
           path:'/purchase/:id',
-          element: <MyPurchasePage></MyPurchasePage>
+          element: <PrivetRoutes><MyPurchasePage></MyPurchasePage></PrivetRoutes>
         },
     ]
   },

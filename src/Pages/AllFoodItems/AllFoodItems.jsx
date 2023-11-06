@@ -1,30 +1,27 @@
 import { useEffect, useState } from "react";
 import FoodItem from "./FoodItem";
 import AllFoodBanner from "./allFoodBanner";
+import useAxios from "../../hooks/useaxios";
 
 const AllFoodItems = () => {
   const [allFoods, setAllFoods] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(9);
   const [count, setCount] = useState(0);
+  const axiosMethod = useAxios();
 
   const numberOfPages = Math.ceil(count / itemsPerPage);
 
+
   const pages = [...Array(numberOfPages).keys()];
 
-  // useEffect(() => {
-  //     axios.get('http://localhost:5000/foods')
-  //     .then(res =>{
-  //         setAllFoods(res.data);
-  //         // console.log(res.data);
-  //     })
-  // }, [])
-
   useEffect(() => {
-    fetch("http://localhost:5000/foodsCount")
-      .then((res) => res.json())
-      .then((data) => setCount(data.count));
-  }, []);
+    axiosMethod.get(`/foodsCount`)
+    .then(res => {
+      setCount(res.data.count);
+    })
+
+  }, [axiosMethod]);
 
   const handleItemsPerPage = (e) => {
     const value = parseInt(e.target.value);
@@ -46,20 +43,21 @@ const AllFoodItems = () => {
   };
 
   useEffect(() => {
-    fetch(
-      `http://localhost:5000/foods?page=${currentPage}&size=${itemsPerPage}`
-    )
-      .then((res) => res.json())
-      .then((data) => setAllFoods(data));
-  }, [currentPage, itemsPerPage]);
+
+    axiosMethod.get(`/foods?page=${currentPage}&size=${itemsPerPage}`)
+    .then(res => {
+      setAllFoods(res.data);
+    })
+
+  }, [axiosMethod, currentPage, itemsPerPage]);
+
 
   return (
     <div className="">
 
     <AllFoodBanner></AllFoodBanner>
 
-
-      <h2 className="text-xl text-center">AllFoodItems page</h2>
+    <h2 className="text-center text-4xl font-bold mt-8">Choose your favorite food</h2>
 
       <div className="flex justify-center">
         <div className="grid md:grid-cols-3 gap-5 my-12">

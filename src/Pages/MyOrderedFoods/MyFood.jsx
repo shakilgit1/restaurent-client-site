@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const MyFood = ({ food }) => {
     const {name, image, date, price, made_by} = food || {};
   return (
@@ -24,6 +26,11 @@ const MyFood = ({ food }) => {
       </div>
     </div>
   );
+};
+
+
+MyFood.propTypes = {
+  food: PropTypes.object
 };
 
 export default MyFood;
