@@ -53,7 +53,7 @@ const SingleFoodPage = () => {
         </div>
           <div className="items-center gap-8 flex mt-4">
             <Link to={`/purchase/${singleItem?._id}`}>
-              <button className="btn bg-black text-white">Order Now</button>
+              <button className="btn bg-black text-white rounded-lg">Order Now</button>
             </Link>
           </div>
         </div>

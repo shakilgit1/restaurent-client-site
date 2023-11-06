@@ -9,8 +9,8 @@ const MyPurchasePage = () => {
   const axiosMethod = useAxios();
   const { id } = useParams();
   const {user} = useAuth();
-
-  console.log(user?.displayName);
+  
+  // console.log(user?.displayName);
 
   useEffect(() => {
     // axios.get(`http:///foods/${ilocalhost:5000d}`)
@@ -20,46 +20,92 @@ const MyPurchasePage = () => {
     });
   }, [axiosMethod, id]);
 
+  const {_id, name, image, made_by, quantity, order_count } = singleItem;
+  
 
-  const handleAddProduct = e =>{
+  const handlePurchase = e =>{
     e.preventDefault();
     const form  = e.target;
-    const name  = form.name.value;
-    const quantity  = form.quantity.value;
+    const foodName  = form.name.value;
+    // const quantity  = form.quantity.value;
     const date  = form.date.value;
     const buyer = form.buyer.value;
     const price  = form.price.value;
     const email = user?.email;
 
-    const addProduct  = {name, quantity, date, buyer, price, email};
-    console.log(addProduct);
-    
-    // fetch('https://brand-shop-server-rosy.vercel.app/technologies', {
-    //   method: 'POST',
-    //   headers: {
-    //     'content-type': 'application/json'
-    //   },
-    //   body: JSON.stringify(addProduct)
-    // })
-    // .then(res => res.json())
-    // .then(data => {
-    //   if(data.insertedId){
-    //     Swal.fire({
-    //       title: 'Success!',
-    //       text: 'Product added Successfully ',
-    //       icon: 'success',
-    //       confirmButtonText: 'Cool'
+    const purchaseItem  = {name, image, made_by, foodName, quantity, date, buyer, price, email, order_count};  
+
+    if(singleItem.quantity > 0 && singleItem.order_count >= 0){
+
+      const updates = {
+        order_count: order_count + 1, // Increase order_count by 1
+        quantity: quantity - 1, // Decrease quantity by 1
+      };
+
+      axiosMethod.post('/mycarts', { ...purchaseItem, ...updates })
+      .then(res => {
+      if(res.data.insertedId){
+       console.log(res.data);
+
+        setSingleItem({ ...singleItem, ...updates });
+
+        const updatedQuantity = purchaseItem.quantity - 1;
+        setSingleItem({ ...singleItem, quantity: updatedQuantity });
+
+        axiosMethod.patch(`/foods/${_id}`, updates)
+        .then((response) => {
+          if (response.status === 200) {
+            alert('updated');
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+       return alert('inserted');
+
+      }
+    })
+    .catch(err =>{
+      console.log(err);
+    })
+    }else{
+      return alert('sorry items not available')
+    }
+
+    // axiosMethod.post('/mycarts', { ...purchaseItem, ...updates })
+    // .then(res => {
+    //   if(res.data.insertedId){
+    //    console.log(res.data);
+
+    //     setSingleItem({ ...singleItem, ...updates });
+
+    //     const updatedQuantity = purchaseItem.quantity - 1;
+    //     setSingleItem({ ...singleItem, quantity: updatedQuantity });
+
+    //     axiosMethod
+    //     .patch(`/foods/${_id}`, updates)
+    //     .then((response) => {
+    //       if (response.status === 200) {
+    //         alert('updated');
+    //       }
     //     })
-    //     console.log(data);
-    //     form.reset();
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+    //    return alert('inserted');
+
     //   }
-      
     // })
+    // .catch(err =>{
+    //   console.log(err);
+    // })
+    
+    
   }
 
   return (
     <div className="w-10/12 mx-auto my-12">
-    <form onSubmit={handleAddProduct}>
+    <form onSubmit={handlePurchase}>
       <div className="bg-black p-20 rounded-lg">
         <div className="flex justify-around items-center flex-col md:flex-row   gap-10">
           <div className="form-control w-1/2 ">
@@ -167,7 +213,7 @@ const MyPurchasePage = () => {
         </div>
         
         <div className="mt-10">
-          <button type="submit" className="btn btn-block btn-primary">
+          <button type="submit" className="btn btn-block btn-primary rounded-lg">
             Purchase Now
           </button>
         </div>
