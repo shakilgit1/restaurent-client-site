@@ -6,19 +6,15 @@ import TopFoodCard from "./TopFoodCard";
 const TopFood = () => {
     const axiosMethod = useAxios();
     const [topFood, setTopFood] = useState([]);
-    // const [foods, setFoods] = useState();
 
-    // console.log(topFood);
     useEffect(() => {
-        axiosMethod.get(`/foods`)
+        axiosMethod.get(`/foods?sortField=order_count&sortOrder=desc`)
         .then(res => {
             setTopFood(res.data);
         })
     
       }, [axiosMethod]);
 
-
-      
 
     return (
         <div className="flex justify-center my-8">
