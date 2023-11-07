@@ -18,13 +18,13 @@ const Navbar = () => {
 
   const navLinks = (
     <>
-      <li>
+      <li className="hover:bg-red-400 rounded-box">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li>
+      <li className="hover:bg-red-400 rounded-box">
         <NavLink to="/all-foods">All Food Items</NavLink>
       </li>
-      <li>
+      <li className="hover:bg-red-400 rounded-box">
         <NavLink to="/blog">Blog</NavLink>
       </li>
     </>
@@ -64,7 +64,7 @@ const Navbar = () => {
         />
       </div>
       <div className="navbar-center hidden lg:flex text-white">
-        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+        <ul className="menu menu-horizontal px-1 gap-2">{navLinks}</ul>
       </div>
       <div className="navbar-end">
 

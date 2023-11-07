@@ -60,7 +60,7 @@ const AllFoodItems = () => {
     <h2 className="text-center text-4xl font-bold mt-8">Choose your favorite food</h2>
 
       <div className="flex justify-center">
-        <div className="grid md:grid-cols-3 gap-5 my-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 my-12">
           {allFoods?.map((food) => (
             <FoodItem key={food._id} food={food}></FoodItem>
           ))}

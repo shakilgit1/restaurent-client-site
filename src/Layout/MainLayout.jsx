@@ -6,7 +6,9 @@ import { Toaster } from "react-hot-toast";
 const MainLayout = () => {
     return (
         <div className="font-lora">
+            <div className="sticky top-0 z-10">
             <Navbar></Navbar>
+            </div>
             <div className="min-h-screen">
             <Outlet></Outlet>
             </div>
