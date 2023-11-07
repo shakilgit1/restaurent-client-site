@@ -20,10 +20,10 @@ const TopFoodCard = ({top}) => {
                 {name}
             </h5>
             <h5 className="text-xl font-semibold  text-blue-400">
-             Category: {category}
+             Category : {category}
             </h5>
             <h5 className="text-lg font-semibold  text-purple-400">
-            Quantity: {quantity}
+            Quantity : {quantity}
             </h5>
          </div>
          <div>

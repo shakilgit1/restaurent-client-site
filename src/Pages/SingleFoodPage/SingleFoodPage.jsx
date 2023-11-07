@@ -33,13 +33,13 @@ const SingleFoodPage = () => {
                 {singleItem?.name}
             </h5>
             <h5 className="text-xl font-semibold  text-blue-400">
-             Category: {singleItem?.category}
+             Category : {singleItem?.category}
             </h5>
             <h5 className="text-lg font-semibold  text-purple-400">
-           Food origin: {singleItem?.origin}
+           Food origin : {singleItem?.origin}
             </h5>
             <h5 className="text-lg font-bold  text-sky-400">
-           Made By: {singleItem?.made_by}
+           Made By : {singleItem?.made_by}
             </h5>
             <h5 className="text-sm font-semibold  text-black">
            {singleItem?.description}

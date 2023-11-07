@@ -4,10 +4,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import useAxios from '../../hooks/useaxios';
 
 const Register = () => {
     const {createUser, profileUpdate} = useContext(AuthContext);
-    console.log();
+    const axiosMethod = useAxios();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -22,6 +23,7 @@ const Register = () => {
         const photo = e.target.photoURL.value;
         const password = e.target.password.value;
         // console.log(name, email, photo, password);
+        const storeUser = {name, email};
 
         if(password.length <6){
          return toast.error('password must be at least 6 character')
@@ -41,6 +43,11 @@ const Register = () => {
             })
             .catch(error => {
               console.log(error);
+            })
+
+            axiosMethod.post('/users', storeUser)
+            .then(res => {
+              console.log(res.data);
             })
               // console.log(res.user);
               e.target.reset();

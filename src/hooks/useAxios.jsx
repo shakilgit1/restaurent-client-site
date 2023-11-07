@@ -10,7 +10,7 @@ const axiosMethod = axios.create({
 
 const useAxios = () => {
   const {logOut} = useAuth();
-//    const {logOut} = useContext(AuthContext);
+
    const navigate = useNavigate();
 
    useEffect(() => {

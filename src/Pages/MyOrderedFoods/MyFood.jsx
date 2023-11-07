@@ -19,8 +19,8 @@ const MyFood = ({ food, handleDelete}) => {
           {name}
             <div className="badge badge-secondary">{date}</div>
           </h2>
-          <p className=" font-bold">Food owner: {made_by}</p>
-          <p className="text-3xl font-bold">Price: ${price}</p>
+          <p className=" font-bold">Food owner : {made_by}</p>
+          <p className="text-3xl font-bold">Price : ${price}</p>
           <div className="card-actions justify-end">
             <button onClick={() => handleDelete(_id)} className="badge badge-outline btn-error py-4">Delete</button>
             
