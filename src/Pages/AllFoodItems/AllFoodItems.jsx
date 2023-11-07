@@ -54,7 +54,7 @@ const AllFoodItems = () => {
 
   return (
     <div className="">
-
+      
     <AllFoodBanner></AllFoodBanner>
 
     <h2 className="text-center text-4xl font-bold mt-8">Choose your favorite food</h2>

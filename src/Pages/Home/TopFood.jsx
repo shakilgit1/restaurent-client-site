@@ -20,8 +20,9 @@ const TopFood = () => {
         <div className="flex justify-center my-8">
             <div className="">
              <h2 className="text-4xl my-8 text-center font-bold">Top 6 Products</h2>
+             <h2 className="text-2xl text-center mb-8">Elevate your dining experience at PIZZAN! Our websites inviting banner welcomes <br /> you with a tantalizing glimpse of our exquisite dishes and warm ambiance.</h2>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                {
                topFood?.slice(0, 6).map(top => <TopFoodCard key={top._id} top={top}></TopFoodCard>)
                }

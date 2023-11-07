@@ -39,6 +39,7 @@ const AddFoodItem = () => {
 
     return (
         <div>
+         
         <div className="w-10/12 mx-auto my-12">
     <form onSubmit={handleAddItems}>
       <div className="bg-black p-20 rounded-lg">

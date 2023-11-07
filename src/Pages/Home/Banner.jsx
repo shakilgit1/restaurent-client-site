@@ -1,6 +1,7 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
 
@@ -27,7 +28,7 @@ const Banner = () => {
           Elevate your dining experience at PIZZAN! Our websites inviting banner welcomes you with a tantalizing glimpse of our exquisite dishes and warm ambiance. 
           </p>
         </div>
-        <button  data-aos="fade-down" className="btn btn-error bg-red-500 rounded-md">All Menus</button>
+        <Link to='/menu'><button  data-aos="fade-down" className="btn btn-error bg-red-500 rounded-md">All Menus</button></Link>
       </div>
     </div>
   );

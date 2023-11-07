@@ -5,7 +5,8 @@ const TopFoodCard = ({top}) => {
     const {_id, name, image, category, price, quantity} = top || {};
 
     return (
-        <div className="w-96 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-[460px]">
+        <div className="">
+          <div className="w-96 md:w-80 lg:w-96 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-[460px] md:h-[500px] lg:h-[460px]">
         <div className="flex justify-center">
         <img
             className="w-full rounded-t-lg h-[250px] hover:scale-[1.05] duration-1000"
@@ -39,6 +40,7 @@ const TopFoodCard = ({top}) => {
           </div>
         </div>
       </div>
+        </div>
     );
 };
 
