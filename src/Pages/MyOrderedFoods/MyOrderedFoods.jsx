@@ -3,6 +3,7 @@ import useAxios from "../../hooks/useaxios";
 import Banner from "../Home/Banner";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const MyOrderedFoods = () => {
   const axiosMethod = useAxios();
@@ -44,6 +45,9 @@ const MyOrderedFoods = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Pizzan | My Carts</title>
+      </Helmet>
       <Banner></Banner>
       <h2 className="text-center text-4xl font-bold my-8">
         Your Ordered food is here

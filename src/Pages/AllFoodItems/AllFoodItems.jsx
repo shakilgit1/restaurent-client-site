@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import FoodItem from "./FoodItem";
 import AllFoodBanner from "./allFoodBanner";
 import useAxios from "../../hooks/useaxios";
+import { Helmet } from "react-helmet";
 
 const AllFoodItems = () => {
   const [allFoods, setAllFoods] = useState([]);
@@ -12,15 +13,12 @@ const AllFoodItems = () => {
 
   const numberOfPages = Math.ceil(count / itemsPerPage);
 
-
   const pages = [...Array(numberOfPages).keys()];
 
   useEffect(() => {
-    axiosMethod.get(`/foodsCount`, {withCredentials: true})
-    .then(res => {
+    axiosMethod.get(`/foodsCount`, { withCredentials: true }).then((res) => {
       setCount(res.data.count);
-    })
-
+    });
   }, [axiosMethod]);
 
   const handleItemsPerPage = (e) => {
@@ -43,21 +41,26 @@ const AllFoodItems = () => {
   };
 
   useEffect(() => {
-
-    axiosMethod.get(`/foods?page=${currentPage}&size=${itemsPerPage}`, {withCredentials: true})
-    .then(res => {
-      setAllFoods(res.data);
-    })
-
+    axiosMethod
+      .get(`/foods?page=${currentPage}&size=${itemsPerPage}`, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        setAllFoods(res.data);
+      });
   }, [axiosMethod, currentPage, itemsPerPage]);
-
 
   return (
     <div className="">
-      
-    <AllFoodBanner></AllFoodBanner>
+      <Helmet>
+        <title>Pizzan | All Foods</title>
+      </Helmet>
 
-    <h2 className="text-center text-4xl font-bold mt-8">Choose your favorite food</h2>
+      <AllFoodBanner></AllFoodBanner>
+
+      <h2 className="text-center text-4xl font-bold mt-8">
+        Choose your favorite food
+      </h2>
 
       <div className="flex justify-center">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 my-12">
@@ -77,7 +80,11 @@ const AllFoodItems = () => {
         </button>
         {pages.map((page) => (
           <button
-            className={currentPage === page ? "btn btn-error mr-2 btn-sm" : "btn btn-primary mr-2 btn-sm"}
+            className={
+              currentPage === page
+                ? "btn btn-error mr-2 btn-sm"
+                : "btn btn-primary mr-2 btn-sm"
+            }
             onClick={() => setCurrentPage(page)}
             key={page}
           >

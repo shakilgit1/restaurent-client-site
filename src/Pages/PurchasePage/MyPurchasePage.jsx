@@ -3,6 +3,7 @@ import useAxios from "../../hooks/useaxios";
 import { useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const MyPurchasePage = () => {
   const [singleItem, setSingleItem] = useState({});
@@ -93,6 +94,9 @@ const MyPurchasePage = () => {
 
   return (
     <div className="w-10/12 mx-auto my-12">
+      <Helmet>
+        <title>Pizzan | Purchase</title>
+      </Helmet>
       <form onSubmit={handlePurchase}>
         <div className="bg-black p-20 rounded-lg">
           <div className="flex justify-around items-center flex-col md:flex-row   gap-10">

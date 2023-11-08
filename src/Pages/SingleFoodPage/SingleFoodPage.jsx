@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAxios from "../../hooks/useaxios";
 import { Link, useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const SingleFoodPage = () => {
   const [singleItem, setSingleItem] = useState({});
@@ -18,6 +19,9 @@ const SingleFoodPage = () => {
 
   return (
     <div className="h-screen items-center flex justify-center">
+      <Helmet>
+        <title>Pizzan | Single Food </title>
+      </Helmet>
       <div className="w-96 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-auto">
         <div className="flex justify-center">
         <img

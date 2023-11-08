@@ -5,6 +5,7 @@ import Tasty from "./Tasty";
 import TopFood from "./TopFood";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
 
@@ -14,6 +15,10 @@ const Home = () => {
       }, []);
     return (
         <div>
+             <Helmet>
+            <title>Pizzan | Home</title>
+             </Helmet>
+             
             <Banner></Banner>
             <TopFood></TopFood>
             <h2 data-aos="fade-up" className="text-5xl text-center my-4">Featured Foods</h2>
