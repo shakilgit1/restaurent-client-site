@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 const TopFoodCard = ({top}) => {
-    const {_id, name, image, category, price, quantity} = top || {};
+    const {_id, name, image, category, price, quantity, order_count} = top || {};
 
     return (
         <div className="">
@@ -25,6 +25,9 @@ const TopFoodCard = ({top}) => {
             </h5>
             <h5 className="text-lg font-semibold  text-purple-400">
             Quantity : {quantity}
+            </h5>
+            <h5 className="text-lg font-semibold  text-purple-400">
+            Order : {order_count}
             </h5>
          </div>
          <div>
