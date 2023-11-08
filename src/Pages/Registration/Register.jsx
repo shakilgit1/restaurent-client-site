@@ -45,7 +45,7 @@ const Register = () => {
               console.log(error);
             })
 
-            axiosMethod.post('/users', storeUser)
+            axiosMethod.post('/users', storeUser, {withCredentials: true})
             .then(res => {
               console.log(res.data);
             })

@@ -11,7 +11,7 @@ const MyOrderedFoods = () => {
   // console.log(myFood);
 
   useEffect(() => {
-    axiosMethod.get(`/mycarts?email=${user?.email}`).then((res) => {
+    axiosMethod.get(`/mycarts?email=${user?.email}`, {withCredentials: true}).then((res) => {
       setMyFood(res.data);
     });
   }, [axiosMethod, user?.email]);
@@ -27,7 +27,7 @@ const MyOrderedFoods = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosMethod.delete(`/mycarts/${_id}`).then((res) => {
+        axiosMethod.delete(`/mycarts/${_id}`, {withCredentials: true}).then((res) => {
           if (res.data.deletedCount > 0) {
             Swal.fire({
               title: "Deleted!",

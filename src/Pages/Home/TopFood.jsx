@@ -8,7 +8,7 @@ const TopFood = () => {
     const [topFood, setTopFood] = useState([]);
 
     useEffect(() => {
-        axiosMethod.get(`/foods?sortField=order_count&sortOrder=desc`)
+        axiosMethod.get(`/foods?sortField=order_count&sortOrder=desc`, {withCredentials: true})
         .then(res => {
             setTopFood(res.data);
         })

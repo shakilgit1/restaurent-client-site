@@ -12,7 +12,7 @@ const MyPurchasePage = () => {
 
 
   useEffect(() => {
-    axiosMethod.get(`/foods/${id}`).then((res) => {
+    axiosMethod.get(`/foods/${id}`, {withCredentials: true}).then((res) => {
       setSingleItem(res.data);
     });
   }, [axiosMethod, id]);
@@ -64,7 +64,7 @@ const MyPurchasePage = () => {
       };
 
       axiosMethod
-        .post("/mycarts", purchaseItem)
+        .post("/mycarts", purchaseItem, {withCredentials: true})
         .then((res) => {
           if (res.data.insertedId) {
             console.log(res.data);
@@ -72,7 +72,7 @@ const MyPurchasePage = () => {
             setSingleItem({ ...singleItem, ...updates });
 
             axiosMethod
-              .patch(`/foods/${_id}`, updates)
+              .patch(`/foods/${_id}`, updates, {withCredentials: true})
               .then(() => {})
               .catch((error) => {
                 console.log(error);

@@ -24,7 +24,7 @@ const AddFoodItem = () => {
         const addItems  = {name, image, made_by, description, origin, category, price, email, order_count, quantity}; 
         console.log(addItems);
 
-        axiosMethod.post('/foods', addItems)
+        axiosMethod.post('/foods', addItems, {withCredentials: true})
           .then(res => {
             if(res.data.insertedId){
               return Swal.fire({

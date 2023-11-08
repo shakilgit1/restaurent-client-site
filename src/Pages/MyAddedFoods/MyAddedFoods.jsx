@@ -10,7 +10,7 @@ const MyAddedFoods = () => {
   const [myAddedFoods, setMyAddedFoods] = useState([]);
 
   useEffect(() => {
-    axiosMethod.get(`/foods?email=${user?.email}`).then((res) => {
+    axiosMethod.get(`/foods?email=${user?.email}`, {withCredentials: true}).then((res) => {
       setMyAddedFoods(res.data);
     });
   }, [axiosMethod, user?.email]);

@@ -9,7 +9,7 @@ const SingleFoodPage = () => {
 
   useEffect(() => {
     // axios.get(`http:///foods/${ilocalhost:5000d}`)
-    axiosMethod.get(`/foods/${id}`).then((res) => {
+    axiosMethod.get(`/foods/${id}`, {withCredentials: true}).then((res) => {
       setSingleItem(res.data);
     //   console.log(res.data);
     });

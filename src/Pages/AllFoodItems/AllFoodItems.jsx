@@ -16,7 +16,7 @@ const AllFoodItems = () => {
   const pages = [...Array(numberOfPages).keys()];
 
   useEffect(() => {
-    axiosMethod.get(`/foodsCount`)
+    axiosMethod.get(`/foodsCount`, {withCredentials: true})
     .then(res => {
       setCount(res.data.count);
     })
@@ -44,7 +44,7 @@ const AllFoodItems = () => {
 
   useEffect(() => {
 
-    axiosMethod.get(`/foods?page=${currentPage}&size=${itemsPerPage}`)
+    axiosMethod.get(`/foods?page=${currentPage}&size=${itemsPerPage}`, {withCredentials: true})
     .then(res => {
       setAllFoods(res.data);
     })

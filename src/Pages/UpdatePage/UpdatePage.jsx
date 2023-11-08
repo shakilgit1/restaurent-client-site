@@ -40,7 +40,7 @@ const UpdatePage = () => {
         const update  = {name, image, made_by, description, origin, category, price, email, order_count, quantity}; 
         console.log(update);
 
-        axiosMethod.put(`/foods/${_id}`, updateItem)
+        axiosMethod.put(`/foods/${_id}`, updateItem, {withCredentials: true})
           .then(res => {
             if(res.data.modifiedCount > 0){
               return Swal.fire({
