@@ -66,7 +66,7 @@ const router = createBrowserRouter([
         {
           path:'/update/:id',
           element: <PrivetRoutes><UpdatePage></UpdatePage></PrivetRoutes>,
-          loader: ({params}) => fetch(`http://localhost:5000/foods/${params.id}`)
+          loader: ({params}) => fetch(`https://restaurent-server-site.vercel.app/foods/${params.id}`)
         },
         {
           path: '/menu',

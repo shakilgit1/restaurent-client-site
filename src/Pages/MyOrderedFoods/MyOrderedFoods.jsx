@@ -12,9 +12,15 @@ const MyOrderedFoods = () => {
   // console.log(myFood);
 
   useEffect(() => {
-    axiosMethod.get(`/mycarts?email=${user?.email}`, {withCredentials: true}).then((res) => {
-      setMyFood(res.data);
-    });
+    // axiosMethod.get(`/mycarts?email=${user?.email}`, {withCredentials: true}).then((res) => {
+    //   setMyFood(res.data);
+    // });
+    fetch(`https://restaurent-server-site.vercel.app/mycarts?email=${user?.email}`, {credentials: 'include'})
+    .then(res => res.json())
+    .then(data => {
+      setMyFood(data)
+      console.log(data);
+    })
   }, [axiosMethod, user?.email]);
 
   const handleDelete = (_id) => {

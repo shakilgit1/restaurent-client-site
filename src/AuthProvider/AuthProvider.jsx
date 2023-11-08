@@ -45,12 +45,12 @@ const AuthProvider = ({children}) => {
             setLoading(false);
 
             if(currentUser){
-                axios.post('http://localhost:5000/jwt', userEmail, {withCredentials: true})
+                axios.post('https://restaurent-server-site.vercel.app/jwt', userEmail, {withCredentials: true})
                 .then(res => {
                     console.log(res.data);
                 })
             }else{
-                axios.post('http://localhost:5000/logOut', userEmail, {withCredentials: true})
+                axios.post('https://restaurent-server-site.vercel.app/logOut', userEmail, {withCredentials: true})
             }
         })
         return () =>{
